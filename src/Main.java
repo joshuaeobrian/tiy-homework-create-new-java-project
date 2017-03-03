@@ -9,22 +9,27 @@ import java.util.Scanner;
  * Created by josh on 3/2/17.
  */
 public class Main {
-	//char array of letters and characters
+	//creating a global char array of letters and characters
 	private char[] letters = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',};
 	private char[] specialChars = {'?','!','@','#','$','%','^','&','*','(',')','-','[',']','{','~','{','}','\\','/'};
 
-	//String array of words
+	//creating a global String array of words
 	private String[] wordList= {"Hello","World","Zoom","Wave","Hide","Define","Hook","Crook","Chop","slap","sally","peter","pepper","Sliders",
-			"apple","Peak","ahoy","lung","tuck","wade","rain","wood","goo","paddy", "pen","slime",};
+			"apple","Peak","ahoy","lung","tuck","wade","rain","wood","goo","paddy", "pen","slime"};
 
 	public static void main(String[] args) {
+		//Starting a new instance of Main to use non static methods
 		Main program = new Main();
+		//Starting the private method start()
 		program.start();
 	}
+	//method that starts the interaction with the console
 	private void start(){
+		//starting a new scanner to allow the console to get input from the user
 		Scanner read = new Scanner(System.in);
 		String input;
 		boolean dowork =false;
+		//While loop that continuously shows the menu until you type 3  or quit
 		while(!dowork){
 			System.out.print("\nPick one: Type 1, 2, or 3" +
 					"\n\t\t1. View Quick 10 Expressions" +
@@ -34,12 +39,15 @@ public class Main {
 			input = read.next();
 			if(Integer.parseInt(input) == 1){
 				System.out.println();
+				//starts quick15 method that enters a for loop
 				quick15();
 			}else if(Integer.parseInt(input) == 2){
 				System.out.println();
+				//starts the complex method that prints out returns for others methods
 				complex();
-			}else if(Integer.parseInt(input) == 3){
+			}else if(Integer.parseInt(input) == 3 || input.toLowerCase().equals("quit")){
 				System.out.println();
+				// returns true and breaks the while loop to exit program
 				dowork = true;
 			}
 		}
@@ -81,23 +89,29 @@ public class Main {
 	}
 	//returns a boolean
 	private boolean isVowel(char character){
+		//Creates a new ArrayList
 		ArrayList<Character> vowels = new ArrayList<>();
+		// adds vowels to the array list vowels
 		vowels.addAll(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+		//prints to the console what letter/character it is checking
 		System.out.println("\nIs '"+character+"' a vowel? ");
+		//checks to see if the letter/character is in array vowels and returns true or false
 		if(vowels.contains(character)){
 			return true;
 		}else{
 			return false;
 		}
 	}
-	//compares two numbers and returns the higher one
+	//compares two integer numbers and returns the higher one
 	private int compareTwoNumbers(int number1, int number2){
 		System.out.println("\nComparing two numbers to see which one is greater: " +number1+" and "+number2 );
+		//compares two numbers and returns the one that higher
 		if(number1 > number2){
 			return number1;
 		}else if (number1 < number2){
 			return number2;
-		}else{
+		}//if both numbers are the same then system will return this issue
+		else{
 			System.out.println("\nSorry both numbers are the same, with the value of ");
 			return number1;
 		}
@@ -123,7 +137,7 @@ public class Main {
 	//getting the remainder of 2 integers
 	private int remainderOf(int number1,int number2){
 		System.out.println("\n\nTime to check the remainder of");
-		//finding out what number is greater to put highest number first
+		//finding out what number is greater to put highest number first then returning the remainder
 		if(number1 > number2){
 			System.out.print(number1 + " % "+ number2 + " = ");
 			return number1 % number2;
